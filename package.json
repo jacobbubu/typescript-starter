@@ -30,8 +30,7 @@
     "semantic-release-prepare": "tsnd tools/semantic-release-prepare",
     "precommit": "lint-staged",
     "preinstall": "tools/preinstall.js",
-    "postinstall": "tsnd -O '{\"target\":\"esnext\",\"typeRoots\":[\"tools/initializer/types\"]}' tools/initializer/index.ts",
-    "travis-deploy-once": "travis-deploy-once"
+    "postinstall": "tsnd -O '{\"target\":\"esnext\",\"typeRoots\":[\"tools/initializer/types\"]}' tools/initializer/index.ts"
   },
   "lint-staged": {
     "{src,test}/**/*.ts": [
@@ -111,5 +110,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "dependencies": {}
 }
