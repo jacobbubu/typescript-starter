@@ -3,7 +3,7 @@
  */
 import * as path from 'path'
 import { readFileSync, writeFileSync, existsSync } from 'fs'
-import { execSync, fork, execFileSync, ChildProcess } from 'child_process'
+import { execSync, fork, ChildProcess } from 'child_process'
 
 import { mv, rm, exec, which } from 'shelljs'
 import * as colors from 'colors'
@@ -85,11 +85,6 @@ const run = async () => {
 
     // Initialize Husky
     process.env.HUSKY_SKIP_INSTALL = '0'
-    // console.log(
-    //   execFileSync(path.resolve(__dirname, '..', '..', 'node_modules', 'husky', 'run.js'), {
-    //     cwd: workspaceDir
-    //   }).toString()
-    // )
 
     await promiseFromChildProcess(
       fork(
