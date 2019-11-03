@@ -1,4 +1,4 @@
-import Solution from '../src/--librarynamewithoutscope--'
+import Solution from '../src/'
 
 /**
  * Dummy test
