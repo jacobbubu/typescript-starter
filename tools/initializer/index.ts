@@ -68,8 +68,9 @@ const run = async () => {
   try {
     const libraryName = await getPackageName()
     let libraryNameWithoutScope = libraryName
+    let scopeName = ''
     if (isScoped(libraryName)) {
-      libraryNameWithoutScope = libraryNameWithoutScope.split('/')[1]
+      ;[scopeName, libraryNameWithoutScope] = libraryNameWithoutScope.split('/')
     }
 
     console.log(
@@ -80,7 +81,16 @@ const run = async () => {
     const username = exec('git config user.name', { silent: true }).stdout.trim()
     const usermail = exec('git config user.email', { silent: true }).stdout.trim()
 
-    modifyContents(libraryName, libraryNameWithoutScope, username, usermail)
+    modifyContents(
+      [
+        /--libraryname--/g,
+        /--scopeName--/g,
+        /--librarynamewithoutscope--/g,
+        /--username--/g,
+        /--usermail--/g
+      ],
+      [libraryName, scopeName, libraryNameWithoutScope, username, usermail]
+    )
     renameItems(libraryNameWithoutScope)
 
     // Initialize Husky
@@ -130,20 +140,15 @@ function removeItems() {
  * @param username
  * @param usermail
  */
-function modifyContents(
-  libraryName: string,
-  libraryNameWithoutScope: string,
-  username: string,
-  usermail: string
-) {
+function modifyContents(from: RegExp[], to: string[]) {
   console.log(colors.underline.white('Modified'))
 
   let files = modifyFiles.map(f => path.resolve(workspaceDir, f))
   try {
     replace.sync({
       files,
-      from: [/--libraryname--/g, /--librarynamewithoutscope--/g, /--username--/g, /--usermail--/g],
-      to: [libraryName, libraryNameWithoutScope, username, usermail]
+      from,
+      to
     })
     console.log(colors.yellow(modifyFiles.join('\n')))
   } catch (error) {
