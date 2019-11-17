@@ -1,7 +1,7 @@
 # --libraryname--
 
 [![Build Status](https://travis-ci.org/--username--/--librarynamewithoutscope--.svg)](https://travis-ci.org/--username--/--librarynamewithoutscope--)
-[![Coverage Status](https://coveralls.io/repos/github/username/--librarynamewithoutscope--/badge.svg)](https://coveralls.io/github/--username--/--librarynamewithoutscope--)
+[![Coverage Status](https://coveralls.io/repos/github/--username--/--librarynamewithoutscope--/badge.svg)](https://coveralls.io/github/--username--/--librarynamewithoutscope--)
 [![npm](https://img.shields.io/npm/v/--libraryname--.svg)](https://www.npmjs.com/package/--libraryname--/)
 
 > A starter project that makes creating a TypeScript module extremely easy.
