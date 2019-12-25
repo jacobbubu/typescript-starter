@@ -37,7 +37,7 @@ const modifyFiles = [
   'tools/gh-pages-publish.ts'
 ]
 const renameFiles = [
-  ['src/library.ts', 'src/--librarynamewithoutscope--.ts'],
+  // ['src/library.ts', 'src/--librarynamewithoutscope--.ts'],
   ['test/library.test.ts', 'test/--librarynamewithoutscope--.test.ts']
 ]
 
@@ -127,7 +127,10 @@ function removeItems() {
   // The directories and files are combined here, to simplify the function,
   // as the 'rm' command checks the item type before attempting to remove it
   let rmItems = rmDirs.concat(rmFiles)
-  rm('-rf', rmItems.map(f => path.resolve(workspaceDir, f)))
+  rm(
+    '-rf',
+    rmItems.map(f => path.resolve(workspaceDir, f))
+  )
   console.log(colors.red(rmItems.join('\n')))
 
   console.log('\n')
